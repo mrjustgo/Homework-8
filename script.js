@@ -58,11 +58,23 @@ const people = [
   }, interval);
   //Задание 4
   function delayForSecond(callback) {
-    setTimeout(callback, 1000); // 1000 миллисекунд = 1 секунда
+    setTimeout(callback, 1000);
+    callback(); // 1000 миллисекунд = 1 секунда
   }
   
   delayForSecond(function () {
     console.log('Привет, Глеб!');
   });
+
   //Задание 5
-  delayForSecond(() => sayHi('Глеб'));
+  function delayForSecond(cb) {
+    setTimeout(() => {
+        console.log('Прошла одна секунда');
+        if(cb) { cb(); }
+
+    }, 1000)
+}
+function sayHi(name) {
+  console.log(`Привет, ${name}!`);
+}
+delayForSecond(() => sayHi('Глеб'));
